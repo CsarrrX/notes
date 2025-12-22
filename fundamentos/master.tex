@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+
+% Importar la configuración global
+\input{preamble.tex}
+
+% --- DATOS DE LA MATERIA ---
+\newcommand{\usuario}{César Pérez Amador}
+\newcommand{\materia}{Fundamentos} % Nombre de la materia
+\newcommand{\clave}{N/A}             % Clave
+\newcommand{\semestre}{Generación 2028}   % Semestre
+
+\begin{document}
+
+% Generar portada automáticamente
+\crearportada
+
+% Índice automático (opcional, pero útil)
+\tableofcontents
+\newpage
+
+% Módulos
+\input{logica.tex}
+
+\end{document}
