@@ -170,4 +170,44 @@ Como se puede ver hay muchos enfoques para resolver problemas, sin embargo en al
 
 \subsection{Variables y cuantificadores}
 
+Uno puede llegar muy lejos usando solamente enunciados primitivos (como $2 + 2 = 4$ o <<yo tengo el pelo blanco>>), conectandolos con lógica, y construyendo hipótesis y conclusiones a base de ello, a esto se le conoce como \textit{lógica booleana}. Sin embargo para la matemática este nivel de lógica no es suficiente, ya que no contiene el concepto fundamental de las \textit{variables}, una \textit{variable} es un simbolo, como $x$ o $n$ que denota un objeto matemático (un entero, vector, función, matriz, etc.) casi en todas las situaciones el \textit{tipo} del objeto debería de declararse, de otra forma, sería difícil formar enunciados bien-definidos a partir de ellos. Además, podemos formar expresiones y enunciados con estas variables, por ejemplo si $x$ es un número real, $x + 3$ es una expresión y $x + 3 = 5$ es un enunciado. Sin embargo, la veracidad del enunciado esta ligada a la variable, en este caso tenemos que el enunciado es verdad \textbf{si y solo si} $x = 2$. Una \textbf{variable libre} es un símbolo cuyo valor no está especificado (ej. $x+3=5$), por lo que la sentencia carece de un valor de verdad definido. En contraste, una \textbf{variable ligada} ocurre cuando se fija su valor (ej. "Sea $x=2$") o se limita mediante cuantificadores, otorgando a la sentencia un valor de verdad definido.
 
+\begin{itemize}
+    \item \textbf{Cuantificador Universal ($\forall$):} La sentencia $\forall x \in T, P(x)$ significa que $P(x)$ es verdadero para todo elemento de tipo $T$. Se demuestra asumiendo un $x$ arbitrario y se refuta con un solo \textbf{contraejemplo}. Si no existen elementos en $T$, la sentencia es \textbf{vacuamente verdadera}.
+    \item \textbf{Cuantificador Existencial ($\exists$):} La sentencia $\exists x \in T : P(x)$ significa que existe al menos un $x$ para el cual $P(x)$ es verdadero. Basta con exhibir un ejemplo específico para probarla.
+\end{itemize}
+
+Decir que algo es cierto para todo $x$ es una afirmación mucho más fuerte que decir que es cierto para algún $x$, excepto cuando el dominio es vacío (donde el $\forall$ es vacuo y el $\exists$ es falso). Ya habíamos hablado de negación de ciertos tipos de conectores lógicos, ahora tenemos que la negación de una sentencia universal produce una existencial y viceversa:
+\begin{itemize}
+    \item $\neg(\forall x, P(x)) \iff \exists x, \neg P(x)$: Negar que todos los cisnes son blancos equivale a decir que existe al menos uno que no lo es.
+    \item $\neg(\exists x, P(x)) \iff \forall x, \neg P(x)$: Negar la existencia de un cisne negro equivale a decir que todos los cisnes no son negros.
+\end{itemize}
+\begin{itemize}
+    \item $\neg(\forall x, P(x)) \iff \exists x, \neg P(x)$.
+    \item $\neg(\exists x, P(x)) \iff \forall x, \neg P(x)$.
+\end{itemize}
+
+\subsubsection{Cuantificadores Anidados}
+El orden es irrelevante si los cuantificadores son del mismo tipo ($\forall\forall$ o $\exists\exists$), pero es crítico si son mixtos:
+\begin{itemize}
+    \item $\forall n \in \mathbb{Z}, \exists m \in \mathbb{Z} : m > n$: Verdadero; para cada $n$, elegimos un $m$ (que depende de $n$) mayor.
+    \item $\exists m \in \mathbb{Z} : \forall n \in \mathbb{Z}, m > n$: Falso; implicaría que existe un número fijo $m$ mayor que todos los enteros simultáneamente.
+\end{itemize}
+
+\subsection{Igualdad}
+
+La igualdad es una relación entre dos objetos $x, y$ del mismo tipo $T$. Su veracidad depende de los valores y de la definición de igualdad para dicho tipo (ej. $12 = 2$ es verdadero en aritmética modular de módulo 10, pero falso en aritmética ordinaria). Para propósitos lógicos, la igualdad debe satisfacer cuatro axiomas fundamentales:
+
+\begin{itemize}
+    \item \textbf{Axioma Reflexivo:} Para cualquier objeto $x$, se tiene $x = x$.
+    \item \textbf{Axioma de Simetría:} Si $x = y$, entonces $y = x$.
+    \item \textbf{Axioma Transitivo:} Si $x = y$ y $y = z$, entonces $x = z$.
+    \item \textbf{Axioma de Sustitución:} Si $x = y$, entonces $f(x) = f(y)$ para cualquier función $f$. Asimismo, si $P(x)$ es una propiedad, entonces $P(x) \iff P(y)$.
+\end{itemize}
+
+Por ejemplo tenemos: 
+\begin{itemize}
+    \item Si $x, y \in \mathbb{R}$ y $x = y$, entonces $x + z = y + z$ para cualquier $z$.
+    \item Si $n, m \in \mathbb{Z}$, $n$ es impar y $n = m$, entonces $m$ es impar.
+    \item Si $x = \sin(y)$ y $y = z^2$, por sustitución $\sin(y) = \sin(z^2)$, y por transitividad $x = \sin(z^2)$.
+\end{itemize}
