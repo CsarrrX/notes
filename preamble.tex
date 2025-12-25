@@ -41,13 +41,21 @@
 \fancyfoot[C]{\thepage}
 
 % --- TEOREMAS (Estilo Clásico) ---
-\theoremstyle{definition} % Título en negrita, texto normal (mejor para notas)
+% 1. Estilo para lo que lleva itálica en el cuerpo (Teoremas, Prop, Lemas)
+\theoremstyle{plain} 
 \newtheorem{teorema}{Teorema}[section]
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{definicion}[teorema]{Definición}
-\newtheorem{ejemplo}[teorema]{Ejemplo}
-\newtheorem{nota}[teorema]{Nota}
 \newtheorem{proposicion}[teorema]{Proposición}
+\newtheorem{lema}[teorema]{Lema}
+
+% 2. Estilo para lo que lleva texto normal (Definiciones y Axiomas)
+\theoremstyle{definition}
+\newtheorem{definicion}[teorema]{Definición}
+\newtheorem{axioma}{Axioma}[section] % Numeración por sección independiente
+
+% 3. Estilo para lo que lleva título en itálica y texto normal (Notas y Ejemplos)
+\theoremstyle{remark} 
+\newtheorem*{nota}{Nota}
+\newtheorem*{ejemplo}{Ejemplo}
 
 % --- COMANDO PARA LA PORTADA ---
 \newcommand{\crearportada}{
