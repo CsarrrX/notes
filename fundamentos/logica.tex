@@ -28,7 +28,6 @@ Ahora, que un enunciado sea verdadero, no significa que sea útil o eficiente. P
 En razonamiento matemático, solo nos importa la \textbf{verdad}, no tanto la útilidad ni eficiencia; esto ya que la verdad es objetiva, podemos deducir enunciados verdaderos de reglas precisas, mientras que la útilidad y eficiencia subjetivas, dependen de la opinión del observador.
 
 Los enunciados son diferentes de las \textit{expresiones}. Como ya vimos los enunciados son verdaderos o falsos, mientras que las expresiones son \textit{secuencias} de caracteres matemáticos que producen un objeto matemático, por ejemplo, $2 \cdot 3 + 5$ es una expresión cuyo resultado es un número. Mientras que $ 2 \cdot 3 + 5 = 9$ es un enunciado, no una expresión. Como con los enunciados, las expresiones pueden ser bien o mal definidas, $2 + \frac{3}{0}$ es una expresión mal-definida. Ejemplos más sutiles de expresiones así ocurren, por ejemplo, cuando intentamos multiplicar matrices con dimensiones mal definidas, evaluamos funciones fuera de su dominio, etc. 
-
 Podemos crear enunciados con expresiones al hacer uso de \textit{relaciones} (como $=, <, \in$, etc.) o propiedades (como: <<es primo>>, <<es continua>>, <<es invertible>>, etc.), por ejemplo, <<$3 + 2$ es un número primo>> o $3 + 28 < 40$ son enunciados matemáticos.
 También podemos crear una \textit{proposición compuesta} usando enunciados más primitivos al \textit{conectarlos lógicamente}. 
 % Fin de la subsección 
@@ -121,8 +120,7 @@ Hay casos particulares y equivalencias de implicación, por ejemplo:
     \end{itemize}
 \end{nota}
 
-\textbf{Reducción al absurdo:} Una aplicación directa de la implicación es que si $p$ implica algo que sabemos que es falso, entonces $p$ mismo debe ser falso. Este es el principio de la \textit{reductio ad absurdum}: para demostrar que una afirmación es falsa, asumimos primero que es verdadera y mostramos que esto conduce a una contradicción lógica (un enunciado que es simultáneamente verdadero y falso).
-La aplicación principal de esta idea es tomar una proposición $p$ implica $q$, negar $q$ (asumir que es falso) y a partir de ahí derivar una contradicción lógica. Por ejemplo:
+\textbf{Reducción al absurdo:} Una aplicación directa de la implicación es que si $p$ implica algo que sabemos que es falso, entonces $p$ mismo debe ser falso. Este es el principio de la \textit{reductio ad absurdum}: para demostrar que una afirmación es falsa, asumimos primero que es verdadera y mostramos que esto conduce a una contradicción lógica (un enunciado que es simultáneamente verdadero y falso). Por ejemplo:
 
 \begin{proposicion}
     No existe un número entero mayor que los demás.
@@ -198,22 +196,47 @@ Decir que algo es cierto para todo $x$ es una afirmación mucho más fuerte que 
 \end{itemize}
 
 \subsubsection{Cuantificadores Anidados}
-El orden es irrelevante si los cuantificadores son del mismo tipo ($\forall\forall$ o $\exists\exists$), pero es crítico si son mixtos:
+El orden de los cuantificadores es fundamental para el significado de una proposición. Se distinguen dos casos principales:
+
+\begin{proposicion}[Conmutatividad]
+El orden es irrelevante si los cuantificadores son del mismo tipo:
 \begin{itemize}
-    \item $\forall n \in \mathbb{Z}, \exists m \in \mathbb{Z} : m > n$: Verdadero; para cada $n$, elegimos un $m$ (que depende de $n$) mayor.
-    \item $\exists m \in \mathbb{Z} : \forall n \in \mathbb{Z}, m > n$: Falso; implicaría que existe un número fijo $m$ mayor que todos los enteros simultáneamente.
+    \item $\forall x \forall y \, P(x, y) \equiv \forall y \forall x \, P(x, y)$
+    \item $\exists x \exists y \, P(x, y) \equiv \exists y \exists x \, P(x, y)$
 \end{itemize}
+\end{proposicion}
+
+\begin{ejemplo}[Cuantificadores Mixtos]
+Si se combinan $\forall$ y $\exists$, el orden es crítico porque define la \textbf{dependencia} de las variables. Sea el dominio $\mathbb{Z}$:
+\begin{itemize}
+    \item $\forall n \exists m (m > n)$: \textbf{Verdadero}. Para cada $n$, existe un $m$ que puede depender de $n$ (ej. $m = n + 1$).
+    \item $\exists m \forall n (m > n)$: \textbf{Falso}. Implicaría la existencia de un entero $m$ fijo que es mayor que todos los demás.
+\end{itemize}
+\end{ejemplo}
+
+\begin{nota}
+En la secuencia $\forall x \exists y$, el valor de $y$ se elige \textit{después} de conocer $x$. En $\exists y \forall x$, el valor de $y$ debe ser el mismo para todos los $x$.
+\end{nota}
 
 \subsection{Igualdad}
 
 La igualdad es una relación entre dos objetos $x, y$ del mismo tipo $T$. Su veracidad depende de los valores y de la definición de igualdad para dicho tipo (ej. $12 = 2$ es verdadero en aritmética modular de módulo 10, pero falso en aritmética ordinaria). Para propósitos lógicos, la igualdad debe satisfacer cuatro axiomas fundamentales:
 
-\begin{itemize}
-    \item \textbf{Axioma Reflexivo:} Para cualquier objeto $x$, se tiene $x = x$.
-    \item \textbf{Axioma de Simetría:} Si $x = y$, entonces $y = x$.
-    \item \textbf{Axioma Transitivo:} Si $x = y$ y $y = z$, entonces $x = z$.
-    \item \textbf{Axioma de Sustitución:} Si $x = y$, entonces $f(x) = f(y)$ para cualquier función $f$. Asimismo, si $P(x)$ es una propiedad, entonces $P(x) \iff P(y)$.
-\end{itemize}
+\begin{axioma}[Reflexivo]
+    Para cualquier objeto $x$, se tiene $x = x$
+\end{axioma}
+
+\begin{axioma}[Simetría]
+    Si $x = y$, entonces $y = x$ 
+\end{axioma}
+
+\begin{axioma}[Transitivo]
+    Si $x = y$ y $y = z$ entonces $x = z$
+\end{axioma}
+
+\begin{axioma}[Sustitución]
+    Si $x = y$, entonces $f(x) = f(y)$ para cualquier función $f$. Asimismo, si $P(x)$ es una propiedad, entonces $P(x) \iff P(y)$
+\end{axioma}
 
 Por ejemplo tenemos: 
 \begin{itemize}
