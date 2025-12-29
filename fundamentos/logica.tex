@@ -1,8 +1,8 @@
-\section{Lógica}
+\chapter{Lógica}
 
 Esta sección se basa en gran medida en el \textbf{Apéndice A} del libro \textit{Analysis I} de Terence Tao. Su objetivo es introducir los fundamentos de la \textbf{lógica matemática}, entendida como el lenguaje formal de las demostraciones. El estudio de esta es indispensable, ya que en matemáticas nos interesa establecer verdades absolutas. Si bien existen otros sistemas lógicos que consideran nociones de verdad no absoluta, estos no son relevantes para los fines de las presentes notas.
 
-\subsection{Enunciados matemáticos}
+\section{Enunciados matemáticos}
 
 Todo argumento matemático está formado por \textit{enunciados matemáticos}. Estos son enunciados precisos que hacen referencia a distintos \textit{objetos matemáticos} (como números, vectores o funciones) y a las \textit{relaciones u operaciones} definidas entre ellos, (tales como la suma, la integración, la igualdad o la composición). Dichos objetos pueden ser constantes o \textit{variables}. Un aspecto fundamental es que todo enunciado matemático posee un valor de verdad bien definido: \textbf{es verdadero o falso}, y no admite ambos valores simultáneamente.
 
@@ -32,7 +32,7 @@ Podemos crear enunciados con expresiones al hacer uso de \textit{relaciones} (co
 También podemos crear una \textit{proposición compuesta} usando enunciados más primitivos al \textit{conectarlos lógicamente}. 
 % Fin de la subsección 
 
-\subsection{Conectores lógicos} 
+\section{Conectores lógicos} 
 
 En lógica matemática, los conectores lógicos constituyen las herramientas fundamentales para construir y analizar proposiciones compuestas a partir de enunciados simples. Mediante estos operadores es posible formalizar relaciones como la conjunción, la disyunción, la implicación y la negación, permitiendo expresar razonamientos de manera precisa y rigurosa. A continuación se presentan los más utilizados. 
 
@@ -70,7 +70,7 @@ El dominio de la negación de proposiciones se da practicándola, no es algo par
 \end{definicion}
 
 
-\subsubsection{Implicación}
+\subsection{Implicación}
 
 Hemos llegado al conector lógico menos intuitivo, la \textbf{implicación} ($\implies$). Si $p$ y $q$ son enunciados, entonces la proposición <<si $p$ entonces $q$>> es la implicación de $p$ a $q$. El significado de la proposición <<si $p$, entonces $q$>> depende de si $p$ es verdadero o falso. Si $p$ es verdadero, entonces <<si $p$, entonces $q$>> es verdadero cuando $q$ es verdadero, y falso cuando $q$ es falso. Si, por el contrario, $p$ es falso, entonces <<si $p$, entonces $q$>> es siempre verdadero, independientemente de si $q$ es verdadero o falso. Dicho de otra manera, cuando $p$ es verdadero, la proposición <<si $p$, entonces $q$>> implica que $q$ es verdadero. Pero cuando $p$ es falso, la proposición <<si $p$, entonces $q$>> no ofrece información sobre si $q$ es verdadero o no; la proposición es verdadera, pero vacua (es decir, no transmite ninguna información nueva más allá del hecho de que la hipótesis es falsa).
 
@@ -103,13 +103,15 @@ Un error común al demostrar una implicación es asumir la conclusión para lleg
     (Incorrecta) $x = 2$; entonces $2x = 4$; entonces $2x + 3 = 7$
 \end{proof}
 
-Hay casos particulares y equivalencias de implicación, por ejemplo:
-
-\begin{itemize}[noitemsep]
-    \item \textbf{Bicondicional:} En el caso especial donde $p$ implica $q$ y, simultáneamente, $q$ implica $p$, utilizamos el conector \textit{bicondicional}: <<$p$ si y solo si $q$>> ($p \iff q$). Esto indica que ambas proposiciones tienen siempre el mismo valor de verdad.
-    
-    \item \textbf{Contrapositiva:} Una equivalencia lógica fundamental de la implicación $p \implies q$ es su \textit{contrapositiva}. Esta establece que la afirmación <<si $p$, entonces $q$>> es equivalente a decir <<si $q$ es falsa, entonces $p$ también debe serlo>> ($\neg q \implies \neg p$). 
-\end{itemize}
+A partir del condicional simple, podemos derivar dos estructuras que no añaden conceptos nuevos, sino que reinterpretan la relación de implicación:
+\begin{flalign*}
+    &\text{1. \textbf{Bicondicional:}} \quad p \iff q \quad \equiv \quad (p \implies q) \land (q \implies p) &
+\end{flalign*}
+Decimos que $p$ y $q$ son \textit{lógicamente equivalentes}. Esto significa que ambos enunciados están <<atados>>: si uno es verdadero, el otro obligatoriamente lo es; y si uno es falso, el otro también.
+\begin{flalign*}
+    &\text{2. \textbf{Contrapositiva:}} \quad \neg q \implies \neg p \quad \equiv \quad p \implies q &
+\end{flalign*}
+Esta es simplemente una \textit{re-escritura} de la implicación. En matemáticas, la contrapositiva es la <<puerta trasera>> de las demostraciones: si no puedes probar que $p$ conduce a $q$, puedes probar que la ausencia de $q$ implica la ausencia de $p$. Ambas afirmaciones contienen exactamente la misma información lógica.
 
 \begin{nota}
     La contrapositiva es una forma equivalente de expresar el ejemplo anterior: <<si el suelo no está mojado, entonces no llueve>> ($\neg q \implies \neg p$). Podemos entender su validez analizando los mismos escenarios:
@@ -130,7 +132,7 @@ Hay casos particulares y equivalencias de implicación, por ejemplo:
     \textbf{Asumimos lo contrario:} supongamos que existe un número entero $N$ mayor que todos los demás. \textbf{Derivamos una consecuencia y un absurdo (contradicción):} por propiedades numéricas sabemos que $N + 1$ es un número mayor y es entero, entonces llegamos a que $N$ es el entero más grande y al mismo tiempo no es el entero más grande. Por lo tanto no puede existir un número entero más grande que todos los demás. 
 \end{proof}
 
-\subsection{La estructura de las demostraciones}
+\section{La estructura de las demostraciones}
 
 Para demostrar una proposición, uno normalmente empieza asumiendo la hipótesis y avanzando hacia la conclusión; esta es el enfoque \textit{directo} para demostrar una proposición. Por ejemplo:
 
@@ -176,49 +178,52 @@ Otra forma de demostrar una implicación es por \textit{contradicción} como se 
 
 Como se puede ver hay muchos enfoques para resolver problemas, sin embargo en algunos contextos unos enfoques son más eficientes que otros, entonces, si notas que hay más de una forma para empezar un problema, puedes probar la que se vea más sencilla, pero tienes que estar preparado para cambiar de enfoque si empieza a parecer imposible. 
 
-\subsection{Variables y cuantificadores}
+\section{Variables y cuantificadores}
 
 Uno puede llegar muy lejos usando solamente enunciados primitivos (como $2 + 2 = 4$ o <<yo tengo el pelo blanco>>), conectándolos con lógica, y construyendo hipótesis y conclusiones a base de ello, a esto se le conoce como \textit{lógica booleana}. Sin embargo para la matemática este nivel de lógica no es suficiente, ya que no contiene el concepto fundamental de las \textit{variables}, una \textit{variable} es un símbolo, como $x$ o $n$ que denota un objeto matemático (un entero, vector, función, matriz, etc.) casi en todas las situaciones el \textit{tipo} del objeto debería de declararse, de otra forma, sería difícil formar enunciados bien-definidos a partir de ellos. Además, podemos formar expresiones y enunciados con estas variables, por ejemplo si $x$ es un número real, $x + 3$ es una expresión y $x + 3 = 5$ es un enunciado. Sin embargo, la veracidad del enunciado está ligada a la variable, en este caso tenemos que el enunciado es verdadero \textbf{si y solo si} $x = 2$. Una \textbf{variable libre} es un símbolo cuyo valor no está especificado (ej. $x+3=5$), por lo que la expresión carece de un valor de verdad definido. En contraste, una \textbf{variable ligada} ocurre cuando se fija su valor (ej. "Sea $x=2$") o se limita mediante cuantificadores, otorgando al enunciado un valor de verdad definido.
 
-\begin{itemize}[noitemsep]
-    \item \textbf{Cuantificador Universal ($\forall$):} La proposición $\forall x \in T, P(x)$ significa que $P(x)$ es verdadero para todo elemento de tipo $T$. Se demuestra asumiendo un $x$ arbitrario y se refuta con un solo \textbf{contraejemplo}. Si no existen elementos en $T$, la proposición es \textbf{vacuamente verdadera}.
-    \item \textbf{Cuantificador Existencial ($\exists$):} La proposición $\exists x \in T : P(x)$ significa que existe al menos un $x$ para el cual $P(x)$ es verdadero. Basta con exhibir un ejemplo específico para probarla.
-\end{itemize}
+\begin{definicion}[Cuantificador Universal ($\forall$)]
+    La proposición $\forall x \in T, P(x)$ significa que la propiedad $P(x)$ es verdadera para \textbf{todos} los elementos de tipo $T$. Para demostrar su validez, se debe argumentar sobre un $x$ arbitrario; para refutarla, basta con exhibir un solo contraejemplo.
+\end{definicion}
 
-Decir que algo es cierto para todo $x$ es una afirmación mucho más fuerte que decir que es cierto para algún $x$, excepto cuando el dominio es vacío (donde el $\forall$ es vacuo y el $\exists$ es falso). Ya habíamos hablado de negación de ciertos tipos de conectores lógicos, ahora tenemos que la negación de una proposición universal produce una existencial y viceversa:
-\begin{itemize}[noitemsep]
-    \item $\neg(\forall x, P(x)) \iff \exists x, \neg P(x)$: Negar que todos los cisnes son blancos equivale a decir que existe al menos uno que no lo es.
-    \item $\neg(\exists x, P(x)) \iff \forall x, \neg P(x)$: Negar la existencia de un cisne negro equivale a decir que todos los cisnes no son negros.
-\end{itemize}
-\begin{itemize}[noitemsep]
-    \item $\neg(\forall x, P(x)) \iff \exists x, \neg P(x)$.
-    \item $\neg(\exists x, P(x)) \iff \forall x, \neg P(x)$.
-\end{itemize}
+\begin{definicion}[Cuantificador Existencial ($\exists$)]
+    La proposición $\exists x \in T : P(x)$ significa que existe \textbf{al menos un} elemento en $T$ para el cual $P(x)$ es verdadero. Su demostración consiste en encontrar o construir un ejemplo específico que cumpla la propiedad.
+\end{definicion}
 
-\subsubsection{Cuantificadores Anidados}
+La negación de estas proposiciones sigue reglas de intercambio fundamentales, conocidas como la dualidad de los cuantificadores:
+
+\begin{equation*}
+    \neg(\forall x, P(x)) \iff \exists x, \neg P(x)
+\end{equation*}
+\begin{equation*}
+    \neg(\exists x, P(x)) \iff \forall x, \neg P(x)
+\end{equation*}
+
+\subsection{Cuantificadores Anidados}
 El orden de los cuantificadores es fundamental para el significado de una proposición. Se distinguen dos casos principales:
 
 \begin{proposicion}[Conmutatividad]
-El orden es irrelevante si los cuantificadores son del mismo tipo:
-\begin{itemize}[noitemsep]
-    \item $\forall x \forall y \, P(x, y) \equiv \forall y \forall x \, P(x, y)$
-    \item $\exists x \exists y \, P(x, y) \equiv \exists y \exists x \, P(x, y)$
-\end{itemize}
+El orden es irrelevante si los cuantificadores son del mismo tipo; es decir, las siguientes equivalencias lógicas son válidas:
+\[
+\begin{aligned}
+    \forall x \forall y \, P(x, y) &\equiv \forall y \forall x \, P(x, y) \\
+    \exists x \exists y \, P(x, y) &\equiv \exists y \exists x \, P(x, y)
+\end{aligned}
+\]
 \end{proposicion}
-
 \begin{ejemplo}[Cuantificadores Mixtos]
-Si se combinan $\forall$ y $\exists$, el orden es crítico porque define la \textbf{dependencia} de las variables. Sea el dominio $\mathbb{Z}$:
-\begin{itemize}[noitemsep]
-    \item $\forall n \exists m (m > n)$: \textbf{Verdadero}. Para cada $n$, existe un $m$ que puede depender de $n$ (ej. $m = n + 1$).
-    \item $\exists m \forall n (m > n)$: \textbf{Falso}. Implicaría la existencia de un entero $m$ fijo que es mayor que todos los demás.
-\end{itemize}
+Si se combinan $\forall$ y $\exists$, el orden define la \textbf{dependencia} de las variables. Sea el dominio $\mathbb{Z}$:
+\begin{alignat*}{3}
+    &\forall n \exists m (m > n) \quad && \text{\textbf{Verdadero.}} \quad && \text{Cada $n$ tiene su propio $m$ (ej. $m = n + 1$).} \\
+    &\exists m \forall n (m > n) \quad && \text{\textbf{Falso.}}     \quad && \text{Requeriría un $m$ universalmente superior.}
+\end{alignat*}
 \end{ejemplo}
 
 \begin{nota}
 En la secuencia $\forall x \exists y$, el valor de $y$ se elige \textit{después} de conocer $x$. En $\exists y \forall x$, el valor de $y$ debe ser el mismo para todos los $x$.
 \end{nota}
 
-\subsection{Igualdad}
+\section{Igualdad}
 
 La igualdad es una relación entre dos objetos $x, y$ del mismo tipo $T$. Su veracidad depende de los valores y de la definición de igualdad para dicho tipo (ej. $12 = 2$ es verdadero en aritmética modular de módulo 10, pero falso en aritmética ordinaria). Para propósitos lógicos, la igualdad debe satisfacer cuatro axiomas fundamentales:
 
