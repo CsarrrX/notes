@@ -1,6 +1,6 @@
-\chapter{Teoría de conjuntos de Zermelo-Frankel}
+\chapter{Teoría de conjuntos de Zermelo-Fraenkel}
 
-Esta sección presenta las bases de la axiomatización estándar de la teoría de conjuntos que formularon Ernst Zermelo y Adolf Frankel, junto con el axioma de elección (axiom of choice). Este conjunto de postulados permite la construcción de estructuras complejas; proporcionando reglas de existencia y operación para los objetos matemáticos que conforman el continuum.
+Esta sección presenta las bases de la axiomatización estándar de la teoría de conjuntos que formularon Ernst Zermelo y Adolf Fraenkel. Este conjunto de postulados permite la construcción de estructuras complejas; proporcionando reglas de existencia y operación para los objetos matemáticos que conforman el continuum.
 
 \section{Axiomas y propiedades básicas de conjuntos}
 
@@ -163,4 +163,44 @@ Ya que los conjuntos son no ordenados $\left\{ a, b \right\} = \left\{ b, a \rig
     Un conjunto $R$ es una \textit{relación binaria} si todos los elementos de $R$ son pares ordenados. (es decir, para $z \in R$, existen $x, y$ tal que $z = \left( x, y \right)$). Podemos denotar $\left( x, y \right) \in R$ como $xRy$, y decir que $x$ esta en relación $R$ con $y$ si $xRy$ es verdad.
 \end{definicion}
 
+\begin{definicion}\label{dfn2.12}
+    La \textit{relación de pertenencia} en $A$ se define como se define como:
+    \[
+        \in_A = \left\{ \left( a, b \right): a \in A, b \in B \text{ y } a \in b \right\}
+    \]
+\end{definicion}
 
+\begin{definicion}\label{dfn2.13}
+    La \textit{relación de identidad} en $A$ se define como se define como:
+    \[
+        Id_A = \left\{ \left( a, b \right): a \in A, b \in B \text{ y } a = b \right\}
+    \]
+\end{definicion}
+
+\begin{definicion}\label{dfn2.14}
+    Sean $A$ y $B$ conjuntos, el \textit{producto cartesiano} de $A$ y $B$ se define por:
+    \[
+        A \times B = \left\{ \left( a, b \right): a \in A \text{ y } b \in B \right\}
+    \]
+\end{definicion}
+
+\begin{proposicion}\label{prop2.4}
+    Dados dos conjuntos cualesquiera $A$ y $B$, el conjunto $A \times B$ existe y es único.
+\end{proposicion}
+
+\begin{proof}
+    Sean $a \in A$ y $b \in B$, entonces $\left\{ a \right\}$ y $\left\{ a, b \right\}$ son subconjuntos de $A \cup B$. Por lo tanto, $\left\{ a \right\}, \left\{ a, b \right\} \in \mathcal{P}(A \cup B)$. A su vez, el par ordenado $\left( a, b \right)$ es un subconjunto de $\mathcal{P}(A \cup B)$ lo que implica:
+    \[
+        \left( a, b \right) \in \mathcal{P}(\mathcal{P}(A \cup B))
+    \]
+    Consideremos el conjunto $U = \mathcal{P}(\mathcal{P}(A \cup B))$ y la propiedad $P(x)$ definida como:
+    \[
+        P(x) \equiv \exists a, \exists b: a \in A \land b \in B \land x = \left( a, b \right)
+    \]
+    Por el \cref{axm2.3}, existe un conjunto $C$ tal que: $x \in C \iff x \in U \land P(x)$, sustituyendo la propiedad tenemos que $x \in C$ si y solo si $x$ es un par ordenado con su primer componente en $A$ y el segundo en $B$. Este conjunto $C$ es, por definición, $A \times B$. Ahora, consideremos un conjunto $C'$ que cumpliera la misma propiedad, entonces, para todo elemento $x$:
+    \[
+        x \in C \iff (x \text{ es un par ordenado} \left( a, b \right) \text{con } a \in A, b \in B) \iff x \in C'
+    \]
+    Por el \cref{axm2.2} $C = C'$. Por lo tanto $A \times B$ existe y es único.
+
+\end{proof}
