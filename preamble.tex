@@ -1,4 +1,7 @@
-% preamble.tex
+% =========================
+%      PREAMBLE.TEX
+% =========================
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot,mexico]{babel} % Español mx, mantiene el punto decimal
@@ -7,7 +10,7 @@
 % --- PAQUETES MATEMÁTICOS ---
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{amsthm}     % Para teoremas sin cajitas
+\usepackage{amsthm}     
 \usepackage{mathtools}
 \usepackage{cleveref}
 
@@ -34,47 +37,90 @@
 \pagestyle{fancy}
 \fancyhf{} % Limpiar todo
 
-% Configuración del Header: Línea abajo y Sección a la derecha
+% Configuración del Header
 \setlength{\headheight}{15pt}
-\renewcommand{\headrulewidth}{0.4pt} % Grosor de la línea
-\fancyhead[R]{\nouppercase{\leftmark}} % Nombre de la sección (Clase) a la derecha
-\fancyhead[L]{} % Izquierda vacía
+\renewcommand{\headrulewidth}{0.4pt} 
+\fancyhead[R]{\nouppercase{\leftmark}} 
+\fancyhead[L]{} 
 
 % Footer: Número de página al centro
 \fancyfoot[C]{\thepage}
 
+% --- CONFIGURACIÓN DE CAJAS (mdframed) ---
+\usepackage[framemethod=TikZ]{mdframed}
+
+% Estilo para Definición, Teorema, etc. (Caja negra completa)
+\mdfdefinestyle{theobox}{
+  linewidth=0.6pt,
+  linecolor=black,
+  roundcorner=0pt,
+  innertopmargin=0pt,    % Espacio interno superior para evitar colapso
+  innerbottommargin=6pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  skipabove=12pt,
+  skipbelow=10pt,
+  nobreak=true           
+}
+
+% Estilo para Demostración (Línea lateral fina)
+\mdfdefinestyle{proofline}{
+  linewidth=1pt,
+  leftline=true,
+  rightline=false,
+  topline=false,
+  bottomline=false,
+  linecolor=black,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  innerleftmargin=10pt,
+  innerrightmargin=0pt,
+  skipabove=8pt,
+  skipbelow=8pt
+}
+
 % --- TEOREMAS (Estilo Clásico) ---
-% 1. Estilo para lo que lleva itálica en el cuerpo (Teoremas, Prop, Lemas)
 \theoremstyle{plain} 
 \newtheorem{teorema}{Teorema}[section]
 \newtheorem{proposicion}[teorema]{Proposición}
 \newtheorem{lema}[teorema]{Lema}
 
-% 2. Estilo para lo que lleva texto normal (Definiciones y Axiomas)
 \theoremstyle{definition}
 \newtheorem{definicion}[teorema]{Definición}
-\newtheorem{axioma}{Axioma}[section] % Numeración por sección independiente
+\newtheorem{axioma}{Axioma}[section] 
 
-% 3. Estilo para lo que lleva título en itálica y texto normal (Notas y Ejemplos)
 \theoremstyle{remark} 
 \newtheorem*{nota}{Nota}
 \newtheorem*{ejemplo}{Ejemplo}
+
+% Aplicar cajas automáticas
+\surroundwithmdframed[style=theobox]{teorema}
+\surroundwithmdframed[style=theobox]{proposicion}
+\surroundwithmdframed[style=theobox]{lema}
+\surroundwithmdframed[style=theobox]{definicion}
+\surroundwithmdframed[style=theobox]{axioma}
+
+% --- REDEFINIR DEMOSTRACIÓN (Línea lateral negra) ---
+\renewenvironment{proof}[1][\proofname]{%
+  \begin{mdframed}[style=proofline]%
+  \noindent\textit{#1. }%
+}{%
+  \hfill$\square$ 
+  \end{mdframed}%
+}
 
 % --- COMANDO PARA LA PORTADA ---
 \newcommand{\crearportada}{
     \begin{titlepage}
         \centering
         \vspace*{2cm}
-        
         {\Huge \textbf{\materia} \par}
         \vspace{1cm}
         {\Large \textbf{Clave:} \clave \par}
         \vspace{0.5cm}
         {\Large \semestre \par}
-        
         \vspace{4cm}
         \textbf{\Large \usuario}
-        
         \vfill
         {\large \today \par}
     \end{titlepage}
